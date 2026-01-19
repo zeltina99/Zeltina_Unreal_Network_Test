@@ -53,17 +53,17 @@ void ANetPlayerController::OnMatchEnded(int32 ServerScore, int32 ClientScore)
 
 	if (MyScore > EnemyScore)
 	{
-		ResultStr = TEXT("VICTORY");
+		ResultStr = TEXT("승리");
 		ResultColor = FLinearColor::Green;
 	}
 	else if (MyScore < EnemyScore)
 	{
-		ResultStr = TEXT("DEFEAT");
+		ResultStr = TEXT("패배");
 		ResultColor = FLinearColor::Red;
 	}
 	else
 	{
-		ResultStr = TEXT("DRAW");
+		ResultStr = TEXT("무승부");
 		ResultColor = FLinearColor::Gray;
 	}
 
