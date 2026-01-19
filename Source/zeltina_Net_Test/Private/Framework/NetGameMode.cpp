@@ -2,4 +2,11 @@
 
 
 #include "Framework/NetGameMode.h"
+#include "Framework/NetGameState.h"
+#include "Framework/NetPlayerController.h"
 
+ANetGameMode::ANetGameMode()
+{
+	GameStateClass = ANetGameState::StaticClass();
+	PlayerControllerClass = ANetPlayerController::StaticClass();
+}

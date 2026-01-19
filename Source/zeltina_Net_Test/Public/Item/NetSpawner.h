@@ -19,8 +19,15 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(EditDefaultsOnly, Category = "Spawning")
+	TSubclassOf<class ANetPickupItem> ItemClass;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Spawning")
+	float SpawnInterval = 3.0f;
+
+	FTimerHandle SpawnTimerHandle;
+
+protected:
+	UFUNCTION()
+	void SpawnItem();
 };

@@ -2,12 +2,14 @@
 
 
 #include "Item/NetSpawner.h"
+#include "Item/NetPickupItem.h"
+#include "NavigationSystem.h"
 
 // Sets default values
 ANetSpawner::ANetSpawner()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 }
 
@@ -16,12 +18,26 @@ void ANetSpawner::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (HasAuthority())
+	{
+		GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &ANetSpawner::SpawnItem, SpawnInterval, true);
+	}
+
 }
 
-// Called every frame
-void ANetSpawner::Tick(float DeltaTime)
+void ANetSpawner::SpawnItem()
 {
-	Super::Tick(DeltaTime);
+	if (!ItemClass) return;
 
+	UNavigationSystemV1* NavSystem = UNavigationSystemV1::GetCurrent(GetWorld());
+	if (NavSystem)
+	{
+		FNavLocation RandomLocation;
+		if (NavSystem->GetRandomPointInNavigableRadius(FVector::ZeroVector, 2000.0f, RandomLocation))
+		{
+			GetWorld()->SpawnActor<ANetPickupItem>(ItemClass, RandomLocation.Location + FVector(0, 0, 50), FRotator::ZeroRotator);
+		}
+	}
 }
+
 

@@ -14,4 +14,7 @@ class ZELTINA_NET_TEST_API ANetGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	ANetGameMode();
+
 };
