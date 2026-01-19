@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/GameInstance.h"
-#include "MultiplayGameInstance.generated.h"
+#include "GameFramework/GameModeBase.h"
+#include "NetGameMode.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ZELTINA_NET_TEST_API UMultiplayGameInstance : public UGameInstance
+class ZELTINA_NET_TEST_API ANetGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
