@@ -34,6 +34,6 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UEditableTextBox> Edit_IP;
 
-	FString GameMapName = TEXT("TestMap");
+	FString GameMapName = TEXT("/Game/Map/TestMap");
 
 };
