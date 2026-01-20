@@ -16,11 +16,4 @@ class ZELTINA_NET_TEST_API ANetMainMenuGameMode : public AGameModeBase
 	
 public:
 	ANetMainMenuGameMode();
-
-protected:
-	virtual void BeginPlay() override;
-
-	UPROPERTY(EditDefaultsOnly, Category = "UI")
-	TSubclassOf<class UUserWidget> MenuWidgetClass = nullptr;
-
 };

@@ -21,6 +21,10 @@ void ANetPlayerController::BeginPlay()
 			MainWidgetInstance->AddToViewport();
 		}
 	}
+	bShowMouseCursor = false;
+
+	FInputModeGameOnly GameInputMode;
+	SetInputMode(GameInputMode);
 }
 
 void ANetPlayerController::Tick(float DeltaTime)
